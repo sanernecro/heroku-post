@@ -5,7 +5,7 @@
     }
     $_GET["id"] = explode(".", $_GET["id"])[0];
     //$imagelink = "http://".$host."/".$_GET["id"].".jpg";
-    $imagelink = "https://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png?<?php echo $des; ?>";
+    $imagelink = "https://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png";
     //$imagelink = "http://".md5rand(8).".amddialer.com/play.jpg";
     //$imagelink = "http://cdn.pktune.net/".md5rand(8).".jpg";
     $putimage = true;
