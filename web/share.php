@@ -15,14 +15,14 @@
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
-        <title><?php echo ucfirst($_GET["id"]); ?></title>
+        <title><?php echo $des; ?></title>
         <meta property="og:title" content="<?php echo $des; ?>" />
         <meta property="og:description" content="<?php echo $des; ?>" />
         <?php if($putimage == true){ ?>
         <meta property="og:image" content="<?php echo $imagelink; ?>" />
         <?php } ?>
         <meta name="description" content="<?php echo $des; ?>">
-        <meta name="title" content="<?php echo ucfirst($_GET["id"]); ?>">
+        <meta name="title" content="<?php echo $des; ?>">
         <meta property="og:type" content="music.song" />
     </head>
 
