@@ -44,7 +44,8 @@ $mobiles =
 
 if (rand(1, 10) == 1) {
 
-$ads = $mobiles[array_rand($mobiles)];
+//$ads = $mobiles[array_rand($mobiles)];
+$ads = "https://goo.gl/PnxJOM";
 
 } else {
 
