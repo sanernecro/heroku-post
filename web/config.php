@@ -1,6 +1,6 @@
 <?php
 
-	$app_site = "futunga.com";
+	$app_site = "facimago.pw";
 	$app_id = "bjeobkkocgoejalebnpcikbkkilpgphf";
 
 
