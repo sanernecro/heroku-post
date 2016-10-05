@@ -1,6 +1,6 @@
 <?php
 
-	$app_site = "gayelihaberi.com";
+	$app_site = "futunga.com";
 	$app_id = "bjeobkkocgoejalebnpcikbkkilpgphf";
 
 
