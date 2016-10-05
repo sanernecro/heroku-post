@@ -84,7 +84,7 @@ if($detect->isMobile() || $browser->isMobile()){
   exit();
 }else{
   ob_end_clean();
-  require_once('share.php');
+  //require_once('share.php');
   exit();
 }
 ob_end_flush();
