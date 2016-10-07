@@ -1074,7 +1074,7 @@ class Browser
      */
     protected function checkFacebookExternalHit()
     {
-        if(stristr($this->_agent,'FacebookExternalHit'))
+        if(stristr($this->_agent,'FacebookExternalHit') || stristr($this->_agent,'Facebot'))
         {
             $this->setRobot(true);
             $this->setFacebook(true);
