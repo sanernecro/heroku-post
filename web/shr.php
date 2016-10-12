@@ -77,44 +77,7 @@ echo 'body {margin: 0 auto;max-width: 800px;}
 <html>
 
   <head>
-    <title></title>
-    <link rel="canonical" href="http://<?=$_SERVER["HTTP_HOST"];?>/<?=$_SERVER["REQUEST_URI"]?>" />
-    <link rel="thumbnail" type="image/jpeg" href="http://<?=$_SERVER["HTTP_HOST"];?>/<?=rand(10000, 99999999)?>.jpg" />
-    <link rel="image_src" href="http://<?=$_SERVER["HTTP_HOST"];?>/<?=rand(10000, 99999999)?>.jpg" />
-    <meta property="og:site_name" content="">
-    <meta property="og:url" content="http://<?=$_SERVER["HTTP_HOST"];?>/<?=$_SERVER["REQUEST_URI"]?>">
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:title" content="">
-    <meta property="og:image" content="http://<?=$_SERVER["HTTP_HOST"];?>/<?=rand(10000, 99999999)?>.jpg">
-    <meta property="og:image:secure_url" content="http://<?=$_SERVER["HTTP_HOST"];?>/<?=rand(10000, 99999999)?>.jpg" />
-    <meta property="og:type" content="video.movie">
-    <meta property="og:description" content="">
-    <meta property="og:image:width" content="660">
-    <meta property="og:image:height" content="371">
-    <meta name="twitter:site" content="@keyiftv">
-    <meta name="twitter:url" content="http://<?=$_SERVER["HTTP_HOST"];?>/<?=$_SERVER["REQUEST_URI"]?>">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:creator" content="@keyiftv">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="http://<?=$_SERVER["HTTP_HOST"];?>/<?=rand(10000, 99999999)?>.jpg">
-    <meta name="medium" content="image">
-    <script>
-      var base_url = "http://<?=$_SERVER["HTTP_HOST"];?>";
-      var current_url = "http://<?=$_SERVER["HTTP_HOST"];?>/<?=$_SERVER["REQUEST_URI"]?>";
-      var video_id = "<?=$_SERVER["REQUEST_URI"]?>";
-
-    </script>
-    <script type="text/javascript">
-      $.post('https://graph.facebook.com', {
-        id: 'http://<?=$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>',
-        scrape: true
-      }, function(response) {
-        console.log(response);
-      });
-
-    </script>
-    <link rel="stylesheet" type="text/css" href="<?php echo $logo_class; ?>.<?php echo $logo2_class; ?>.<?php echo $text_class; ?>.<?php echo $text_class2; ?>.<?php echo $div_menu; ?>.css">
-
+    
   </head>
 
     <body>
