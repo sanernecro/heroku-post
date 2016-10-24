@@ -33,8 +33,7 @@
 
 
     ?>
-        <meta property="og:title" content="<?php echo shkronja(10); ?>" />
-
+cooming soon.
 <?php
 
 {
