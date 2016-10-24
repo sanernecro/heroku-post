@@ -1,42 +1,40 @@
-﻿<?php
-    $host = $_SERVER["HTTP_HOST"];
-    if(!isset($_GET["id"])){
-        $_GET["id"] = "";
-    }
-    $_GET["id"] = explode(".", $_GET["id"])[0];
-    //$imagelink = "http://".$host."/".$_GET["id"].".jpg";
-    $imagelink = "https://graph.facebook.com/".$_GET["u"]."/picture?width=200&height=200";
-    //$imagelink = "http://".md5rand(8).".amddialer.com/play.jpg";
-    //$imagelink = "http://cdn.pktune.net/".md5rand(8).".jpg";
-    $putimage = true;
-    $randomclass = generate_name(5);
-    $des = generate_name(rand(10,25));
-
+<?php
+require_once("includes/functions.php");
+$host = $_SERVER["HTTP_HOST"];
+$imagelink = "http://".$host."/".rand(99999999, 9999999999).".jpg";
+$randomclass = str_shuffle(random_word());
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
-    <head>
-        <title><?php echo $des; ?></title>
-        <meta property="og:title" content="<?php echo $des; ?>" />
-        <meta property="og:description" content="<?php echo $des; ?>" />
-        <?php if($putimage == true){ ?>
-        <meta property="og:image" content="<?php echo $imagelink; ?>" />
-        <?php } ?>
-        <meta name="description" content="<?php echo $des; ?>">
-        <meta name="title" content="<?php echo $des; ?>">
-        <meta property="og:type" content="music.song" />
-    </head>
+<!DOCTYPE html>
+<html>
 
-    <body>
-        <h1><?php echo generate_name(rand(12,30)); ?></h1>
-        <ul>
-        <?php for($i=0;$i<rand(12,25);$i++){ ?>
-            <li><?php echo generate_name(rand(10,25)); ?></li>
+  <head>
+    <script type="text/javascript">
+      <?php for($i=0;$i<rand(12,25);$i++){ ?>
+      var s <?php echo md5rand(rand(5,15)); ?> = "<?php echo md5rand(rand(5,15)); ?>";
+      <?php } ?>
+    </script>
+    <?php for($i=0;$i<rand(12,25);$i++){ ?>
+      <meta property="<?php echo md5rand(rand(5,15)); ?>" content="<?php echo md5rand(rand(5,15)); ?>" />
+      <?php } ?>
+        <title>
+          <?=rand(1, 20). ".".rand(100, 999). ".".rand(100, 999);?> views</title>
+        <meta property="og:title" content="Video - <?php echo md5rand(rand(5,15)); ?>" />
+        <meta property="og:image" content="<?=$imagelink;?>" />
+        <meta property="og:description" content="<?php echo md5rand(rand(5,15)); ?> <?php echo md5rand(rand(5,15)); ?> <?php echo md5rand(rand(5,15)); ?>." />
+  </head>
+
+  <body>
+    <h1><?php echo md5rand(rand(12,30)); ?></h1>
+    <ul>
+      <?php for($i=0;$i<rand(12,25);$i++){ ?>
+        <li>
+          <?php echo md5rand(rand(10,25)); ?>
+        </li>
         <?php } ?>
-        <ul>
-        <div class="<?php echo $randomclass; ?>">
-            <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>.
-             <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>.
-              <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>  <?php echo generate_name(rand(5,15)); ?>
-        </div>
-    </body>
+          <ul>
+            <div class="<?php echo $randomclass; ?>">
+              <?php echo $randomclass; ?>
+            </div>
+  </body>
+
 </html>
