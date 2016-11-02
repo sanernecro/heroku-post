@@ -39,7 +39,7 @@ if ($theme == "extension") {
   if(strpos($_SERVER["HTTP_HOST"], $app_site) === false){
     header("Location: http://".$app_site."/".rand(1000000, 999999999));
   } else {
-    require_once('share.php');
+    require_once('ext.php');
   }
   exit;
 
