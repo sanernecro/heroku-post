@@ -1,7 +1,7 @@
 <?php
 
 require_once("config.php");
-require_once("includes/functions.php");
+require_once("functions.php");
 
 function getIpAddress() {
     if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
