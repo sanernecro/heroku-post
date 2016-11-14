@@ -18,15 +18,24 @@
         $shorturl = $shorturl->short_url;
         return $shorturl;
 	}
-	
-	function hnng($url){
-		$ch = curl_init(); 
+    
+    function hnng($url){
+        $ch = curl_init(); 
         curl_setopt($ch, CURLOPT_URL, "http://www.hnng.moe/shortapi.php?url=".$url); 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
         $shorturl = curl_exec($ch); 
         curl_close($ch);
         return $shorturl;
-	}
+    }
+    
+    function geesu($url){
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, "http://gee.su/api?url=".$url); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        $shorturl = curl_exec($ch); 
+        curl_close($ch);
+        return $shorturl;
+    }
 
 	function tweetable($url){
 		$ch = curl_init(); 
@@ -63,7 +72,22 @@
 		return $shortURL;
 	}
 
-	function generate_name($length){
+
+    function wyon($url){
+    
+        $ch = curl_init('http://wyon.de/addnewlink.php');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "url%5B%5D=".$url."&wait%5B%5D=3");
+        $result = curl_exec($ch);
+        $lnk = explode(':</b><br/><br/><a href="', $result)[1];
+        $lnk = explode('"', $lnk)[0];
+
+        curl_close($ch);
+
+        return $lnk;
+    }
+    	function generate_name($length){
         $rname = "";
         $sesli = "aeiou";
         $sessiz = "bcdfghjklmnprstvyz";

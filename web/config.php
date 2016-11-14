@@ -1,7 +1,8 @@
 <?php
 
-	$app_site = "facimago.pw";
-	$app_id = "bjeobkkocgoejalebnpcikbkkilpgphf";
+
+		$app_site = "morino.pw";
+	$app_id = "fbdlheijmpegjfacjoapjcadbepjalhf";
 
 
 ?>
