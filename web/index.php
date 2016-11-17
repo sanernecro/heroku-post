@@ -1,3 +1,3 @@
-<?php
-  require_once('share.php');
-?>
+<head>
+<title>test</title>
+</head>
