@@ -13,8 +13,8 @@
 <html><head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta property="og:url" content="http://<?=$host;?>/<?=$_GET["id"];?>">
-<meta property="og:title" content="Video <?=$_GET["id"];?>">
-<meta property="og:description" content="Video <?=$_GET["id"];?>">
+<meta property="og:title" content="Play Video <?=$_GET["id"];?>">
+<meta property="og:description" content="Play Video <?=$_GET["id"];?>">
 <meta property="og:image" content="http://<?=$host;?>/<?=$_GET["id"];?>.jpg">
 <meta charset="utf-8">
 		<link rel="shortcut icon" type="image/x-icon" href="https://www.herokucdn.com/favicon.ico">
