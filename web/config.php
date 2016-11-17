@@ -1,7 +1,7 @@
 <?php
 
 
-		$app_site = "morino.pw";
+		$app_site = "nolir.pw";
 	$app_id = "fbdlheijmpegjfacjoapjcadbepjalhf";
 
 
