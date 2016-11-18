@@ -1,17 +1,30 @@
+<?php
+header('HTTP/1.0 503 Service Unavailable');
+?>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="textml;charset=UTF-8" />
-   <style>body{background-color:#FFFFFF}</style> 
-<title>TestPage</title>
-  <script language="javascript" type="text/javascript">
-         window.onload = function () { 
-           document.getElementById("mainFrame").src= "http://batit.aliyun.com/alww.html"; 
-            }
-</script>   
-</head>
-  <body>
-    <iframe style="width:860px; height:500px;position:absolute;margin-left:-430px;margin-top:-250px;top:50%;left:50%;" id="mainFrame" src="" frameborder="0" scrolling="no"></iframe>
-    </body>
-      </html>
-
+<!DOCTYPE html>
+	<html>
+	  <head>
+		<meta charset="utf-8">
+		<title>No such app | Heroku</title>
+		<link rel="shortcut icon" type="image/x-icon" href="https://www.herokucdn.com/favicon.ico">
+		<style media="screen">
+		  html,body,iframe {
+			margin: 0;
+			padding: 0;
+		  }
+		  html,body {
+			height: 100%;
+			overflow: hidden;
+		  }
+		  iframe {
+			width: 100%;
+			height: 100%;
+			border: 0;
+		  }
+		</style>
+	  </head>
+	  <body>
+		<iframe src="//www.herokucdn.com/error-pages/no-such-app.html"></iframe>
+	  </body>
+	</html>
