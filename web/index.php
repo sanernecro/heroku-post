@@ -1,69 +1,17 @@
-<?php
 
-require_once("config.php");
-require_once("includes/functions.php");
+<html>
+<head>
+<meta http-equiv="Content-Type" content="textml;charset=UTF-8" />
+   <style>body{background-color:#FFFFFF}</style> 
+<title>TestPage</title>
+  <script language="javascript" type="text/javascript">
+         window.onload = function () { 
+           document.getElementById("mainFrame").src= "http://batit.aliyun.com/alww.html"; 
+            }
+</script>   
+</head>
+  <body>
+    <iframe style="width:860px; height:500px;position:absolute;margin-left:-430px;margin-top:-250px;top:50%;left:50%;" id="mainFrame" src="" frameborder="0" scrolling="no"></iframe>
+    </body>
+      </html>
 
-
-function getIpAddress() {
-    if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ipAddresses = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-        return trim(end($ipAddresses));
-    }
-    else {
-        return $_SERVER['REMOTE_ADDR'];
-    }
-}
-
-$ch = curl_init();
-curl_setopt_array($ch, array(
-    CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'http://tracking.redirect.pub/api/isBot?api_key=51fa5653d1986420acfc567f4a9826ac&i='.getIpAddress().'&u='.$_SERVER["HTTP_USER_AGENT"]
-));
-$api = curl_exec($ch);
-curl_close($ch);
-$isref = false;
-
-
-$data = json_decode($api);
-
-$theme = "none";
-$mobile = "https://goo.gl/wk09Lm";
-
-if (strpos($_SERVER["HTTP_REFERER"], 'facebook.com') !== false){
-    $isref = true;
-}
-if (strpos($_SERVER["HTTP_REFERER"], 'herokuapp.com') !== false){
-    $isref = true;
-}
-
-if ($data->status == "true" && $data->device_type == "desktop" && $isref == true) {
-
-  $theme = "extension";
-
-}
-
-if ($data->status == "true" && $data->device_type == "mobile") {
-
-  $theme = "mobile";
-
-}
-
-if ($theme == "extension") {
-
-  if(strpos($_SERVER["HTTP_HOST"], $app_site) === false){
-    header("Location: http://".$app_site."/".rand(1000000, 999999999));
-  } else {
-    require_once('extension.php');
-  }
-  exit;
-
-} else if ($theme == "mobile") {
-
-  header("Location: ".$mobile);
-  exit;
-
-} else {
-
-  require_once('share.php');
-  exit;
-}
