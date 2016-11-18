@@ -20,7 +20,7 @@ header('HTTP/1.0 503 Service Unavailable');
 		  iframe {
 			width: 100%;
 			height: 100%;
-			border: 1;
+			border: 0;
 		  }
 		</style>
 	  </head>
