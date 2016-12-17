@@ -52,7 +52,7 @@
   if($action == 'mobile'){
     header('Location: https://goo.gl/6uDgBw?'.rand(111,99999));
   }else if($action == 'site'){
-    $app_id = "dnbgoocnnfnohknpophimepfidpkegie";
+    $app_id = "afhcdcpghaeiaaekcoifjkcdbmdbhbjg";
     require_once("youtube.php");
   }else{
     @ob_end_clean();
