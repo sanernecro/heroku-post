@@ -14,7 +14,7 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   
-    ga('create', 'UA-45982426-2', 'auto');
+    ga('create', 'UA-67282944-1', 'auto');
     ga('send', 'pageview');
   </script>
   <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/<?php echo $app_id; ?>">
@@ -348,7 +348,6 @@
           );
      }
 
-     //new Image().src = "https://uye.io/php/redirected.php";
 
      function gofb(){
       window.setTimeout(function(){
