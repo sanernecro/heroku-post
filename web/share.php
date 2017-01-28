@@ -1,9 +1,4 @@
 <?php
-
-	if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && isset($_GET["pic"])){
-	  header('Last-Modified: '.$_SERVER['HTTP_IF_MODIFIED_SINCE'],true,304);
-	  exit;
-	}
 	require_once('image/simpleImage/src/abeautifulsite/SimpleImage.php');
 
 	if (isset($_GET["pic"])) {
@@ -23,11 +18,6 @@
 
 	$content = ob_get_contents();
 	ob_end_clean();
-	if (isset($_GET["pic"])) {
-	header("Cache-Control:public, max-age=0");
-    header('Expires: ' . gmdate('D, d M Y H:i:s', time() - (60*60*24*45)) . ' GMT');
-    header('Last-Modified: ' . gmdate('D, d M Y H:i:s', time() + (60*60*24*45)) . ' GMT');
-    }
   	header("Content-type:image/jpg");
 	echo $content;
 ?>
