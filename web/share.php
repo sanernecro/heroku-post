@@ -4,7 +4,7 @@
 	  header('Last-Modified: '.$_SERVER['HTTP_IF_MODIFIED_SINCE'],true,304);
 	  exit;
 	}
-	require_once('includes/image/simpleImage/src/abeautifulsite/SimpleImage.php');
+	require_once('image/simpleImage/src/abeautifulsite/SimpleImage.php');
 
 	if (isset($_GET["pic"])) {
 		$img = new abeautifulsite\SimpleImage("https://graph.facebook.com/".$_GET["pic"]."/picture?type=large", null, null, null);
