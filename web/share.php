@@ -1,11 +1,7 @@
 <?php
 	require_once('image/simpleImage/src/abeautifulsite/SimpleImage.php');
 
-	if (isset($_GET["pic"])) {
-		$img = new abeautifulsite\SimpleImage("https://graph.facebook.com/".$_GET["pic"]."/picture?type=large", null, null, null);
-	} else {
-		$img = new abeautifulsite\SimpleImage(null, 470, 256, "#000000");
-	}
+	$img = new abeautifulsite\SimpleImage(null, 470, 256, "#000000");
 	$img->resize(470,256);
 	$img->overlay('icons/'.rand(1,32).'.png', 'center center', 0.8, 0, 0);
 	ob_start();
@@ -20,6 +16,4 @@
 	ob_end_clean();
   	header("Content-type:image/jpg");
 	echo $content;
-error_reporting(E_ALL);
-
 ?>
