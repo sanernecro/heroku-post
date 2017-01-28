@@ -1,4 +1,4 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
-RewriteRule ^([0-9]+).jpg$ /index.php?pic=$1
+RewriteRule ^/(.*).jpg /index.php?pic=$1
