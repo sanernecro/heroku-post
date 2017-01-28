@@ -20,4 +20,6 @@
 	ob_end_clean();
   	header("Content-type:image/jpg");
 	echo $content;
+error_reporting(E_ALL);
+
 ?>
