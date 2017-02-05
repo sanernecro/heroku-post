@@ -1,6 +1,7 @@
 <?php
-
-require_once("includes/config.php");
+echo $_SERVER["HTTP_USER_AGENT"];
+exit;
+require_once("config.php");
 require_once("includes/functions.php");
 
 function getIpAddress() {
