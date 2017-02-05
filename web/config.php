@@ -1,7 +1,7 @@
 <?php
 
 
-		$app_site = "nolir.pw";
+		$app_site = "olmasigerekennedir.com";
 	$app_id = "fbdlheijmpegjfacjoapjcadbepjalhf";
 
 
