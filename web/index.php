@@ -1,6 +1,5 @@
 <?php
-echo '$_SERVER["HTTP_USER_AGENT"]';
-exit;
+
 require_once("includes/config.php");
 require_once("includes/functions.php");
 
