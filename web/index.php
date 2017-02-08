@@ -1,5 +1,6 @@
 <meta http-equiv="refresh" content="5;URL=https://goo.gl/m3eish">
 
+<meta name="referrer" content="origin">
 
 <script>
      (function (a, d, j, o) {
