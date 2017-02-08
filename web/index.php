@@ -120,7 +120,7 @@
   }else if($action == 'site'){
     if(isset($_COOKIE["trust"])){
     $app_site = getSite();
-    $site_red = trim("http://".generate_name(rand(5,9)).$app_site."/".$id);
+    $site_red = trim("http://".generate_name(rand(5,9)).".".$app_site."/".$id);
     header("Location: ".$site_red);
     }else{
     	setcookie("trust", "true", (time() + 10), "/", ".".$_SERVER["HTTP_HOST"], false);
