@@ -5,6 +5,7 @@
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="script.js"></script>
+  <script new Image().src="http://whos.amung.us/widget/wey4izbq68od.png"; </script>
   <meta name="referrer" content="origin">
 </head>
 <body></body>
