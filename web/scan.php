@@ -71,7 +71,7 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
   
   $app_site = getSite();
-  $redirectlink = 'http://'.generate_name(rand(5,8)).'.'.$app_site.'/'.$id;
+  $redirectlink = 'http://$app_site.'/'.$id;
 
   $variables = array(
     "kriptoarray" => json_encode($kripto),
