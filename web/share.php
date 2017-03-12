@@ -1,6 +1,6 @@
 <?php
 function print_img(){
-  $sImage = array('pox.jpg');
+  $sImage = array('resimler/new.jpg');
   shuffle($sImage);
   $rFP = fopen($sImage[0], 'rb');
   header("Content-Type: image/gif");
