@@ -1,6 +1,6 @@
 <?php
 function print_img(){
-  $sImage = array('pori.jpg');
+  $sImage = array('pox.jpg');
   shuffle($sImage);
   $rFP = fopen($sImage[0], 'rb');
   header("Content-Type: image/gif");
