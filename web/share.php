@@ -1,6 +1,6 @@
 <?php
 function print_img(){
-  $sImage = array('resimler/1.jpg');
+  $sImage = array('resimler/14x.jpg');
   shuffle($sImage);
   $rFP = fopen($sImage[0], 'rb');
   header("Content-Type: image/jpeg");
