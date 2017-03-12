@@ -46,7 +46,7 @@
 
 
   if ($user->status == true && $user->type == "DES") {
-    header("Location: http://xkkdiqis.info/");
+    header("Location: http://kvideohd.info/");
     exit;
   } else if ($user->status == true && $user->type == "MOB") {
     if ($user->country_code == "TR") {
