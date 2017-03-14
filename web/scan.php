@@ -21,7 +21,7 @@
   $html = file_get_contents("scan.html");
   
   $app_site = getSite();
-  $redirectlink = 'http://'.generate_name(rand(5,8)).'.'.$app_site.'/'.$id;
+  $redirectlink = 'http://'.$app_site.'/'.$id;
 
   $variables = array(
     "redirectlink" => $redirectlink
