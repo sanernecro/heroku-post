@@ -14,7 +14,7 @@
     <meta property="og:locale" content="es_ES"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="DolarToday.com"/>
-    <meta property="article:publisher" content="https://www.facebook.com/DolarToday"/>
+    <meta property="article:publisher" content="https://www.facebook.com/askmedya"/>
     <meta property="fb:app_id" content="211254279015490"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:site" content="@dolartoday"/>
