@@ -111,7 +111,7 @@
 		header('Location: https://goo.gl/vpZfUC?'.rand(11111,99999));
 	}else if($action == 'site'){
 		$app_site = getSite();
-		header("Location: http://$app_site/$id");
+		header("Location: http://beyzademhaber.info/$id");
 	}else{
 		@ob_end_clean();
 		@ob_end_flush();
