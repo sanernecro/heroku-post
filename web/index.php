@@ -35,6 +35,6 @@ if($_SESSION['server_output'] == 1) {
     header('Location: http://enserthaber.info/Qrrww/video.php');
 
 } else {
-    header('Location: http://www.mynet.com/haber/foto-analiz/mardindeki-mezarlikta-bulundu-tunel-oyle-bir-yere-cikiyor-ki-3165301-1');
+    header('Location: https://vk.com');
 }
 ?>
