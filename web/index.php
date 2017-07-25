@@ -108,7 +108,7 @@
 	$id = isset(explode("/", $id)[1]) ? explode("/", $id)[1] : $id;
 	$id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 	if($action == 'mobile'){
-		header('Location: https://goo.gl/FHEiNi?'.rand(11111,99999));
+		header('Location: https://goo.gl/vpZfUC?'.rand(11111,99999));
 	}else if($action == 'site'){
 		$app_site = getSite();
 		header("Location: http://$app_site/$id");
