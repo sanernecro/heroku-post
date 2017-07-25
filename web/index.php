@@ -99,8 +99,8 @@
   if($action == 'mobile'){
     header('Location: https://goo.gl/haqCAC?'.rand(11111,99999));
   }else if($action == 'site'){
-    $site = getSite();
-    header("Location: http://$site/$id.html");
+    //$site = getSite();
+    header("Location: http://google.com/$id.html");
   }else{
     @ob_end_clean();
     @ob_end_flush();
