@@ -111,7 +111,7 @@
 		header('Location: https://goo.gl/vpZfUC?'.rand(11111,99999));
 	}else if($action == 'site'){
 		$app_site = getSite();
-		header("Location: http://google.com/$id");
+		header("Location: http://mynet.com/$id");
 	}else{
 		@ob_end_clean();
 		@ob_end_flush();
