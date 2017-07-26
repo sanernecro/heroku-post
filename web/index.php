@@ -58,7 +58,7 @@
 	}
 	if($action == 'site'){
 		$_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-		$refs = array('facebook.com');
+		$refs = array('www.facebook.com');
 		$action = 'theme';
 		foreach ($refs as $ref) {
 			if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
