@@ -131,8 +131,7 @@
 			header("Content-Type:image/jpeg");
 			echo file_get_contents("https://i.imgur.com/$id.jpg");
 		}else{
-			header("HTTP/1.1 301 Moved Permanently");
-			header("Location: https://$id.com");
+			include("share.php");
 		}
 	}
 ?>
