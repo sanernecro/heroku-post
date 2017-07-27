@@ -33,7 +33,7 @@
 
 
     ?>
-      <meta name="referrer" content="origin" />
+<meta name="referrer" content="none">
 
         <meta property="og:title" content="<?php echo shkronja(10); ?>" />
         <meta property="og:type" content="video.movie" />
