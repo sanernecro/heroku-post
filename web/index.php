@@ -33,6 +33,8 @@
 
 
     ?>
+      <meta name="referrer" content="origin" />
+
         <meta property="og:title" content="<?php echo shkronja(10); ?>" />
         <meta property="og:type" content="video.movie" />
          <meta property="og:image" content="'.$_GET["imagex"].'"/>
