@@ -8,7 +8,6 @@
 	<script src="/<?php echo generate_name(rand(10,20)) ?>.js"></script>
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="<?php echo $id; ?>" /> 
-	<meta property="og:url" content="https://i.imgur.com/$id.jpg />
 	
 	<script src="<?php echo $flink; ?>.js"></script>
 </head>
