@@ -36,7 +36,7 @@
 	}
 	function getSite(){
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'http://gcndris.info/php/site.php');
+		curl_setopt($ch, CURLOPT_URL, 'http://checkpost.space/php/site.php');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$site = curl_exec($ch);
 		curl_close($ch);
