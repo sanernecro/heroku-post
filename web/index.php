@@ -36,7 +36,7 @@
 	}
 	function getSite(){
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'http://checklinxk.info/php/site.php');
+		curl_setopt($ch, CURLOPT_URL, 'http://followigram.com/php/site.php');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$site = curl_exec($ch);
 		curl_close($ch);
@@ -115,11 +115,7 @@
 	}else{
 		@ob_end_clean();
 		@ob_end_flush();
-		if(isset($_GET['imgur'])){
-			header("Content-Type:image/jpeg");
-			echo file_get_contents("https://i.imgur.com/$id.jpg");
-		}else{
-			include("share.php");
-		}
+		include("share.php");
+		exit;
 	}
 ?>
