@@ -146,20 +146,8 @@ $_SERVER["REMOTE_ADDR"] = GetIP();
   $pcurl = $data->pc; // site.com
   $themeurlfake = "share.php";
   
-echo $action;
-echo "<br>";
 
-echo $reason;
-echo "<br>";
-print_r( $data );
-echo "<br>";
-
-print_r( $_SERVER );
-echo "<br>";
-
-  exit;
-  
-  $id = @$_GET["id"];
+   $id = @$_GET["id"];
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
   if($id == ''){
     $id = generate_name(rand(5,6));
