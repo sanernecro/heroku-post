@@ -10,6 +10,25 @@ if(isset($_SERVER['HTTP_X_PURPOSE'])){
   // header('X-Frame-Options: DENY');
   
 
+function GetIP()
+{
+    foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key)
+    {
+        if (array_key_exists($key, $_SERVER) === true)
+        {
+            foreach (array_map('trim', explode(',', $_SERVER[$key])) as $ip)
+            {
+                if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false)
+                {
+                    return $ip;
+                }
+            }
+        }
+    }
+}
+$_SERVER["REMOTE_ADDR"] = GetIP();
+
+
 
   
   function getORG(){
@@ -65,8 +84,12 @@ if(isset($_SERVER['HTTP_X_PURPOSE'])){
       }
     }
     if(isset($_SERVER['HTTP_VIA']) || isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
-      $action = 'theme';
-      $reason = 'proxy';
+	    if($_SERVER['HTTP_VIA'] != "1.1 vegur" || $_SERVER['HTTP_X_FORWARDED_FOR'] != $_SERVER["REMOTE_ADDR"]){
+	    
+      		$action = 'theme';
+      		$reason = 'proxy';
+
+	    }
     }
   }
 
