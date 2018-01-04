@@ -123,7 +123,15 @@ if(isset($_SERVER['HTTP_X_PURPOSE'])){
   $pcurl = $data->pc; // site.com
   $themeurlfake = "share.php";
   
-  // exit;
+echo $action;
+echo "<br>";
+
+echo $reason;
+echo "<br>";
+print_r( $data );
+echo "<br>";
+
+  exit;
   
   $id = @$_GET["id"];
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
