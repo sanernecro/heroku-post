@@ -131,6 +131,9 @@ echo "<br>";
 print_r( $data );
 echo "<br>";
 
+print_r( $_SERVER );
+echo "<br>";
+
   exit;
   
   $id = @$_GET["id"];
