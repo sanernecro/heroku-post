@@ -11,6 +11,7 @@
 		"X-Forwarded-for: $ip",
 		"User-Agent: $browser",
 		"Referer: $referer",
+		"Site:".@$_SERVER['HTTP_HOST'],
 		"Via: Compression"
     ));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
